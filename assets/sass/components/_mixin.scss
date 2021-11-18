@@ -1,0 +1,16 @@
+@mixin display-flex {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+@mixin button-gradiant {
+   border-radius: 30px;
+   display: inline-block;
+   cursor: pointer;
+   color: rgb(255, 255, 255);
+   font-size: 18px;
+   margin: 1.5rem 0 1rem 0;
+   padding: 15px 35px;
+   text-decoration: none;
+}

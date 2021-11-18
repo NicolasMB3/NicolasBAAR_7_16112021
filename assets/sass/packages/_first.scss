@@ -1,0 +1,13 @@
+@use '../components' as *;
+
+body {
+   margin: 0;
+   font-family: 'Rubik', sans-serif;
+   background-color: $grey;
+   color: $textgrey;
+   ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+   }
+}
