@@ -12,10 +12,36 @@
 <body>
    <div class="left-image">
       <!-- Image left -->
-      <img src="assets/images/first-page/banner.png" alt="Bannière et logo du groupe Groupomania">
+      <img class="left-image--banner"src="assets/images/first-page/banner.png" alt="Bannière du groupe Groupomania">
+      <img class="left-image--logo" src="assets/images/logo-groupomania.png" alt="Logo du groupe Groupomania">
    </div>
    <div class="content-register">
       <!-- Content right -->
+      <div class="title-header">
+         <p>Bienvenue 👋</p>
+         <h1>Se connecter sur Groupomania</h1>
+      </div>
+      <form id="stripe-login">
+         <div class="field">
+           <label for="email">Email</label>
+           <input type="email" name="email">
+         </div>
+         <div class="field">
+           <div class="grid--50-50">
+             <label for="password">Password</label>
+           </div>
+           <input type="password" name="password">
+         </div>
+         <div class="field field-checkbox">
+           <label for="checkbox">
+             <input type="checkbox" name="checkbox">Rester connecté (1 semaine)
+           </label>
+         </div>
+         <div class="field">
+           <input type="submit" name="submit" value="Se connecter">
+         </div>
+      </form>
+      <p>Pas encore de compte ? Créer un compte gratuitement</p>
    </div>
 </body>
 </html>
