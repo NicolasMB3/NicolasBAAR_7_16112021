@@ -7,7 +7,7 @@
 
 <div align="center">
 
-  ### 🌶️ Piiquante
+  ### 🌍 Groupomania
 
   <p align="center">
     Projet pour OpenClassrooms
@@ -23,12 +23,12 @@
 
 ## À propos :
 
-Le site Piiquante est un projet produit par Nicolas pour la formation de développeur web à OpenClassrooms.
+Le site Groupomania est un projet produit par Nicolas pour la formation de développeur web à OpenClassrooms.
 
 Contenance du site :
 * Création de pages dynamiques pour afficher les produits,
-* Utilisation de Javascript et Node.js,
-* Création d'articles, suppression et modification.
+* Utilisation de Javascript, Node.js, JWT, Express et VueJS 3,
+* Création de poste, suppression et modification.
 
 ## Développer avec :
 
@@ -36,7 +36,7 @@ Liste de tous les languages utilisés pour la création du site :
 
 * [HTML](https://developer.mozilla.org/fr/docs/Web/HTML)
 * [CSS](https://developer.mozilla.org/fr/docs/Web/CSS)
-* [Angular](https://angular.io/)
+* [VueJS](https://v3.vuejs.org/guide/introduction.html)
 * [Node.js](https://nodejs.org/en/)
 
 ## Installation
@@ -65,7 +65,7 @@ Un fois Node.js installer correctement (dans le dossier front, mais aussi dans l
    ```
 2. Lancer le serveur front-end
    ```sh
-   ng serve
+   npm run serve
    ```
 Une fois le serveur back-end et front-end allumés, une page devrait s'ouvrir automatiquement sur votre navigateur préféré 🎉
 
