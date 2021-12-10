@@ -15,9 +15,9 @@
     <a href="https://nicolasbaar.fr/"><strong>Mon site web »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/NicolasMB3/NicolasBAAR_6_24102021/issues">Un bug 🐜</a>
+    <a href="https://github.com/NicolasMB3/NicolasBAAR_7_16112021/issues">Un bug 🐜</a>
     ·
-    <a href="https://github.com/NicolasMB3/NicolasBAAR_6_24102021/issues">Une option à ajouter 🗂️</a>
+    <a href="https://github.com/NicolasMB3/NicolasBAAR_7_16112021/issues">Une option à ajouter 🗂️</a>
   </p>
 </div>
 
@@ -57,7 +57,7 @@ Dans une console Node.js (ou directement avec la console de Visual Studio Code)
 
 ### Installation
 
-Un fois Node.js installer correctement (dans le dossier front, mais aussi dans le dossier back). Vous aurez besoin de lancer les serveurs grâce aux commandes suivantes :
+Un fois Node.js correctement installé (dans le dossier front, mais aussi dans le dossier back). Vous aurez besoin de lancer les serveurs grâce aux commandes suivantes :
 
 1. Lancer le serveur back-end
    ```sh
@@ -73,15 +73,15 @@ Une fois le serveur back-end et front-end allumés, une page devrait s'ouvrir au
 
 Nicolas BAAR - [@MeesN](https://nicolasbaar.fr/) - nicolasbaar@icloud.com
 
-Lien du projet : [https://github.com/NicolasMB3/NicolasBAAR_6_24102021](https://github.com/NicolasMB3/NicolasBAAR_6_24102021)
+Lien du projet : [https://github.com/NicolasMB3/NicolasBAAR_7_16112021](https://github.com/NicolasMB3/NicolasBAAR_7_16112021)
 
 <p align="right">(<a href="#top">Revenir en haut de la page</a>)</p>
 
-[contributors-shield]: https://img.shields.io/github/contributors/NicolasMB3/NicolasBAAR_6_24102021.svg?style=for-the-badge
-[contributors-url]: https://github.com/NicolasMB3/NicolasBAAR_6_24102021/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/NicolasMB3/NicolasBAAR_6_24102021.svg?style=for-the-badge
-[forks-url]: https://github.com/NicolasMB3/NicolasBAAR_6_24102021/pulse
-[stars-shield]: https://img.shields.io/github/stars/NicolasMB3/NicolasBAAR_6_24102021.svg?style=for-the-badge
-[stars-url]: https://github.com/NicolasMB3/NicolasBAAR_6_24102021/stargazers
-[issues-shield]: https://img.shields.io/github/issues/NicolasMB3/NicolasBAAR_6_24102021.svg?style=for-the-badge
-[issues-url]: https://github.com/NicolasMB3/NicolasBAAR_6_24102021/issues
+[contributors-shield]: https://img.shields.io/github/contributors/NicolasMB3/NicolasBAAR_7_16112021.svg?style=for-the-badge
+[contributors-url]: https://github.com/NicolasMB3/NicolasBAAR_7_16112021/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/NicolasMB3/NicolasBAAR_7_16112021.svg?style=for-the-badge
+[forks-url]: https://github.com/NicolasMB3/NicolasBAAR_7_16112021/pulse
+[stars-shield]: https://img.shields.io/github/stars/NicolasMB3/NicolasBAAR_7_16112021.svg?style=for-the-badge
+[stars-url]: https://github.com/NicolasMB3/NicolasBAAR_7_16112021/stargazers
+[issues-shield]: https://img.shields.io/github/issues/NicolasMB3/NicolasBAAR_7_16112021.svg?style=for-the-badge
+[issues-url]: https://github.com/NicolasMB3/NicolasBAAR_7_16112021/issues
