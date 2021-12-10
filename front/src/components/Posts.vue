@@ -9,7 +9,7 @@
         <v-card width="900">
           <v-img v-if="post.imageUrl" height="200px" :src="post.imageUrl">
             <v-app-bar flat color="rgba(0, 0, 0, 0)" >
-              <v-toolbar-title class="text-h6 white--text pl-0">
+              <v-toolbar-title class="text-subtitle-2 white--text pl-0">
                 Posté le : {{ dateParser(post.createdAt) }}
               </v-toolbar-title>
               <v-spacer></v-spacer>
@@ -57,7 +57,7 @@
           </v-img>
           <v-img v-else height="200px" src="@/assets/banner.jpg">
             <v-app-bar flat color="rgba(0, 0, 0, 0)" >
-              <v-toolbar-title class="text-h6 white--text pl-0">
+              <v-toolbar-title class="text-subtitle-2 white--text pl-0">
                 Posté le : {{ dateParser(post.createdAt) }}
               </v-toolbar-title>
               <v-spacer></v-spacer>
@@ -131,7 +131,6 @@
               </div>
               <v-expand-transition>
                 <div v-show="show">
-                  <v-divider></v-divider>
                   <div
                     v-for="comment in post.Comments"
                     :key="comment.id"
