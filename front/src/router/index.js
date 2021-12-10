@@ -8,18 +8,9 @@ import OnePost from "@/components/OnePost.vue";
 import Profil from "@/components/Profil.vue";
 import Users from "@/components/AllUser.vue"
 
-
 Vue.use(VueRouter);
-// const user = JSON.parse(localStorage.getItem("user"));
-// let id = user.id;
 
 const routes = [
-  // {
-  //   path: "/",
-  //   name: "Home",
-  //   component: Home,
-  // },
- 
   {
     path: "/",
     name: "Login",
@@ -50,12 +41,6 @@ const routes = [
     name: "Users",
     component: Users,
   },
-  // {
-  //   path: "/profil/:id",
-  //   name: "Profil",
-  //   component: Profil,
-  // },
-
 ];
 
 const router = new VueRouter({

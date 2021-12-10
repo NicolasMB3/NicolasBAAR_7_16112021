@@ -82,7 +82,7 @@
             </span>
             <span v-else class="mb-2">Photo de profil</span>
             <div class="d-flex flex-column">
-              <v-avatar class="profile" color="grey" size="164" tile>
+              <v-avatar rounded size="176" class="profile" color="grey" >
                 <v-img :src="user.avatar"></v-img>
               </v-avatar>
               <v-btn
@@ -131,12 +131,9 @@
         <div>
           <v-col>
             <span v-if="user.id == UserId">
-              Vous être membre depuis: {{ dateParser(user.createdAt) }}
+              Vous êtes membre depuis: {{ dateParser(user.createdAt) }}
             </span>
             <span v-else>Membre depuis: {{ dateParser(user.createdAt) }}</span>
-          </v-col>
-          <v-col v-if="user.isAdmin == userAdmin">
-            <v-btn @click="showUsers">Afficher les utilisateurs</v-btn>
           </v-col>
         </div>
       </div>
@@ -256,12 +253,6 @@ export default {
     uploadImage() {
       this.file = this.$refs.file.files[0];
       console.log(this.file);
-    },
-    showUsers() {
-      const router = this.$router;
-      setTimeout(function () {
-        router.push("/users");
-      }, 10);
     },
     backToPostsPage() {
       const router = this.$router;

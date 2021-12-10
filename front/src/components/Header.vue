@@ -29,10 +29,16 @@
       <v-icon>mdi-account</v-icon>
     </v-btn>
 
+    <v-btn v-if="$store.state.isUserLoggedIn" @click="showUsers()">
+      <span>Utilisateurs</span>
+      <v-icon>mdi-account-group</v-icon>
+    </v-btn>
+
     <v-btn v-if="$store.state.isUserLoggedIn" @click="logout">
       <span>Se déconnecter</span>
       <v-icon>mdi-run</v-icon>
     </v-btn>
+
   </v-bottom-navigation>
 </template>
 
@@ -58,6 +64,12 @@ export default {
       this.$router.push({
         name: "Login",
       });
+    },
+    showUsers() {
+      const router = this.$router;
+      setTimeout(function () {
+        router.push("/users");
+      }, 10);
     },
     profil(userId) {
       const router = this.$router
