@@ -73,7 +73,6 @@ exports.createPost = async (req, res, next) => {
 exports.updatePost = async (req, res, next) => {
   try {
     let newImage;
-
     let post = await Post.findOne({ where: { id: req.params.id } });
 
     if (req.file) {

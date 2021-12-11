@@ -22,7 +22,7 @@
       </div>
       <div class="d-flex justify-center">
         <v-btn color="success" @click="$refs.file.click()">
-          Ajouter une image (optionel)
+          Ajouter une image (optionnel)
         </v-btn>
         <input
           v-show="false"
