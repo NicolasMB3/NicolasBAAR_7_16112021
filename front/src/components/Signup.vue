@@ -1,70 +1,60 @@
 <template>
-  <v-card
-    max-width="800"
-    elevation="2"
-    class="mx-auto d-flex align-center rounded-xl"
-    color="blue lighten-4"
-  >
-  <v-row class="d-flex flex-md-row justify-center">
-    <v-col class="pa-4 d-flex align-center">
-      <img class="rounded-xl" src="../assets/icon-above-font.png" alt="" />
-    </v-col>
-    <v-col class="ma-2 pa-4">
-      <v-toolbar
-        class="d-flex justify-center rounded-xl"
-        elevation="0"
-        dense
-        color="white"
-      >
-        <v-toolbar-title>Créer un compte</v-toolbar-title>
-      </v-toolbar>
-      <div class="mt-4 mr-4 ml-4">
-        <v-text-field
-          v-model="first_name"
-          label="Prénom"
-          hide-details="auto"
-          autocomplete="off"
-        ></v-text-field>
-        <v-text-field
-          v-model="last_name"
-          label="Nom"
-          hide-details="auto"
-          autocomplete="off"
-        ></v-text-field>         
-        <v-text-field
-          v-model="email"
-          label="Email"
-          hide-details="auto"
-          autocomplete="off"
-        ></v-text-field>
-        <v-text-field
-          v-model="password"
-          label="Mot de passe"
-          type="password"
-          autocomplete="off"
-        ></v-text-field>
-
-        <!-- <p v-if="loginError">{{ loginError }}</p>
-      <p v-if="loginSuccessful">Login Successful</p> -->
-        <div class="error" v-html="error" />
-        <br />
-        <v-row align="center" justify="space-around">
-          
-          <v-btn
-            class="btn align-self-center ma-2 rounded-xl"
-            color="white"
-            @click="register"
-          >
-            Valider
-          </v-btn>
-          
-        </v-row>
-        <br />
-        <span>Si tu as déjà un compte, <a @click="login">connecte-toi.</a></span>
-      </div>
-    </v-col>
-    </v-row>
-  </v-card>
+  <v-layout align-center justify-center>
+      <v-flex xs12 sm8 md4>
+        <v-alert
+        border="top"
+        color="blue"
+        elevation="6"
+        prepend-icon="mdi-lock"
+        type="success">
+          Déjà un compte ? 
+          <span @click="login">
+            Connectez-vous ici
+          </span>
+        </v-alert>
+        <v-card class="elevation-12">
+            <v-toolbar dark color="primary">
+              <v-toolbar-title>S'inscrire 👋</v-toolbar-title>
+            </v-toolbar>
+            <v-card-text>
+              <v-form>
+                  <v-text-field
+                    prepend-icon="mdi-account"
+                    v-model="first_name"
+                    label="Prénom"
+                    hide-details="auto"
+                    autocomplete="off"
+                  ></v-text-field>
+                  <v-text-field
+                    prepend-icon="mdi-account"
+                    v-model="last_name"
+                    label="Nom"
+                    hide-details="auto"
+                    autocomplete="off"
+                  ></v-text-field>
+                  <v-text-field
+                    prepend-icon="mdi-at"
+                    v-model="email"
+                    label="Adresse mail"
+                    hide-details="auto"
+                    autocomplete="off"
+                  ></v-text-field>
+                  <v-text-field
+                    prepend-icon="mdi-lock"
+                    v-model="password"
+                    label="Mot de passe"
+                    type="password"
+                    autocomplete="off"
+                  ></v-text-field>
+              </v-form>
+            </v-card-text>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn color="primary" :disabled="email && password && last_name && first_name == ''" @click="login">S'inscrire</v-btn>
+            </v-card-actions>
+        </v-card>
+      </v-flex>
+  </v-layout>
 </template>
 
 <script>
@@ -110,28 +100,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.v-toolbar__title {
-  color: #D32F2F;
-  font-weight: bold;
-  // text-decoration: underline;
-  font-size: 2rem;
-  font-display: roboto;
-}
-
-.btn {
-  color: #D32F2F;
-  font-weight: bold;
-  text-decoration: underline;
-}
-
-img {
-  width: 95%;
-  height: auto;
-}
-
-.v-application a{
-  color: #01579B;
-  text-decoration: underline;
-  font-weight: bold;
+span {
+  color: rgb(255, 255, 255);
+  cursor: pointer;
 }
 </style>
