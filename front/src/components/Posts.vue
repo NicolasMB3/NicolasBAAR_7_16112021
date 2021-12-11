@@ -150,9 +150,7 @@
                       :
                       {{ comment.text }}
                     </v-card-text>
-                    <v-btn depressed color="error" @click="deleteComment(comment.id)">
-                      Supprimer
-                    </v-btn>
+                    <v-icon class="cross" color="error" @click="deleteComment(comment.id)">mdi-delete</v-icon>
                   </div>
                 </div>
               </v-expand-transition>
@@ -351,4 +349,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.cross {
+  cursor: pointer;
+}
 </style>
