@@ -108,7 +108,14 @@
               {{ post.User.first_name }} :
             </div>
             <div class="offset-md-1 mx-auto">
-              <p>{{ post.message }}</p>
+              <v-alert
+                shaped
+                dark
+                text
+                color="info"
+              >
+                {{ post.message }}
+              </v-alert>
             </div>
             <div>
               <v-col width="900" class="d-flex justify-end">

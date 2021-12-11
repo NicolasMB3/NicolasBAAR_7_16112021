@@ -18,34 +18,37 @@
             </v-toolbar>
             <v-card-text>
               <v-form>
-                  <v-text-field
-                    prepend-icon="mdi-account"
-                    v-model="first_name"
-                    label="Prénom"
-                    hide-details="auto"
-                    autocomplete="off"
-                  ></v-text-field>
-                  <v-text-field
-                    prepend-icon="mdi-account"
-                    v-model="last_name"
-                    label="Nom"
-                    hide-details="auto"
-                    autocomplete="off"
-                  ></v-text-field>
-                  <v-text-field
-                    prepend-icon="mdi-at"
-                    v-model="email"
-                    label="Adresse mail"
-                    hide-details="auto"
-                    autocomplete="off"
-                  ></v-text-field>
-                  <v-text-field
-                    prepend-icon="mdi-lock"
-                    v-model="password"
-                    label="Mot de passe"
-                    type="password"
-                    autocomplete="off"
-                  ></v-text-field>
+                <v-text-field
+                  prepend-icon="mdi-account"
+                  v-model="first_name"
+                  label="Prénom"
+                  hide-details="auto"
+                  autocomplete="off"
+                  :rules="rules"
+                ></v-text-field>
+                <v-text-field
+                  prepend-icon="mdi-account"
+                  v-model="last_name"
+                  label="Nom"
+                  hide-details="auto"
+                  autocomplete="off"
+                  :rules="rules"
+                ></v-text-field>
+                <v-text-field
+                  prepend-icon="mdi-at"
+                  v-model="email"
+                  label="Adresse mail"
+                  hide-details="auto"
+                  autocomplete="off"
+                  :rules="rules"
+                ></v-text-field>
+                <v-text-field
+                  prepend-icon="mdi-lock"
+                  v-model="password"
+                  label="Mot de passe"
+                  type="password"
+                  autocomplete="off"
+                ></v-text-field>
               </v-form>
             </v-card-text>
             <v-card-actions>
@@ -67,6 +70,10 @@ export default {
       email: "",
       password: "",
       error: null,
+      rules: [
+        value => !!value || 'Obligatoire',
+        value => (value && value.length >= 3) || 'Minimum 3 caractères',
+      ]
     };
   },
   methods: {
@@ -78,9 +85,6 @@ export default {
           email: this.email,
           password: this.password,
         });
-        // this.$store.dispatch("setToken", response.data.token);
-        // this.$store.dispatch("setUser", response.data.UserId);
-
         const router = this.$router;
         setTimeout(function () {
           router.push("/");

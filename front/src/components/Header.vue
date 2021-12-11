@@ -1,4 +1,5 @@
 <template>
+
   <v-bottom-navigation color="primary" grow>
     <template v-if="$store.state.isUserLoggedIn">
       <v-btn @click="backToPostsPage">

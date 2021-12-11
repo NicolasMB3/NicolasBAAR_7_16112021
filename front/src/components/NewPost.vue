@@ -38,7 +38,7 @@
       <div id="preview">
         <img v-if="url" :src="url" />
       </div>
-      <v-row v-if="message || name">
+      <v-row v-if="message">
         <v-col class="d-flex justify-end">
           <v-btn v-if="url" depressed color="primary" class="btn align-self-center" @click.prevent.stop="uploadImage(); publishPost()">
             Envoyer le message

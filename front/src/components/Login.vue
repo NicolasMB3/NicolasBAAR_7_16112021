@@ -24,6 +24,7 @@
                     label="Adresse mail"
                     type="text"
                     v-model="email"
+                    :rules="rules"
                   ></v-text-field>
                   <v-text-field
                     id="password"
@@ -32,6 +33,7 @@
                     label="Mot de passe"
                     type="password"
                     v-model="password"
+                    :rules="rules"
                   ></v-text-field>
               </v-form>
             </v-card-text>
@@ -54,6 +56,10 @@ export default {
       email: "",
       password: "",
       error: null,
+      rules: [
+        value => !!value || 'Obligatoire',
+        value => (value && value.length >= 3) || 'Minimum 3 caractères',
+      ]
     };
   },
   methods: {
