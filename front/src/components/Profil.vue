@@ -12,6 +12,25 @@
     <v-card-subtitle class="pb-0">
       <span>Membre depuis: {{ dateParser(user.createdAt) }}</span>
     </v-card-subtitle>
+      <v-btn
+        tile
+        color="success"
+      >
+        <v-icon left>
+          mdi-pencil
+        </v-icon>
+        Modifier
+      </v-btn>
+
+      <v-btn
+        tile
+        color="error"
+      >
+        <v-icon left>
+          mdi-delete
+        </v-icon>
+        Supprimer
+      </v-btn>
   </v-card>
   </v-container>
 </template>
