@@ -105,7 +105,7 @@
           </v-img>
           <v-card-text>
             <div class="font-weight-bold ml-8 mb-2">
-              {{ post.User.first_name }} :
+              {{ post.User.first_name }} à écris :
             </div>
             <div class="offset-md-1 mx-auto">
               <v-alert

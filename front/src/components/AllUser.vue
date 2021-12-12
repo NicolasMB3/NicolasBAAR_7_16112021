@@ -1,15 +1,26 @@
 <template>
   <div>
-    <div class="d-flex justify-center pa-4 ma-4">
-      <h1 class="font-weight-light">Liste d'utilisateurs enregistrés</h1>
-    </div>
+    <v-alert
+      max-width="900"
+      class="offset-md-3 mx-auto"
+      dismissible
+      color="blue darken-1"
+      border="left"
+      elevation="2"
+      colored-border
+      icon="mdi-web"
+    >
+      Liste d'utilisateurs enregistrés
+    </v-alert>
     <v-card
-      max-width="800"
+      max-width="900"
       class="card d-flex align-center offset-md-3 mx-auto mb-4"
+      border="left"
+      colored-border
       v-for="(user, index) in users"
       :key="index"
     >
-      <v-col class="d-flex align-center">
+      <v-col class="d-flex align-center ">
         <v-avatar class="ma-4">
           <img :src="user.avatar" alt="" />
         </v-avatar>
@@ -20,22 +31,21 @@
         </h2>
       </v-col>
       <v-spacer></v-spacer>
-      <v-col v-if="user.id == UserId || userAdmin === true">
-        <v-btn
-          class="btn align-self-center ma-2 rounded-xl"
-          color="red darken-1"
-          @click="deleteAccount(user.id)"
-        >
-          Supprimer le compte
-        </v-btn>
+      <v-col class="d-flex flex-row-reverse" v-if="user.id == UserId || userAdmin === true">
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on, attrs }">
+            <v-icon color="error" left @click="deleteAccount(user.id)" v-bind="attrs" v-on="on"> mdi-delete </v-icon>
+          </template>
+          <span>Supprimer le profil</span>
+        </v-tooltip>
+        <v-tooltip bottom>
+          <template v-slot:activator="{ on, attrs }">
+            <v-icon left @click="profil(user.id)" v-bind="attrs" v-on="on"> mdi-account </v-icon>
+          </template>
+          <span>Afficher le profil</span>
+        </v-tooltip>
       </v-col>
     </v-card>
-    <div class="d-flex justify-center pa-4 ma-4">
-      <v-btn @click="profil(UserId)" class="ma-2" color="blue darken-4" dark>
-        <v-icon dark left> mdi-arrow-left </v-icon>
-        Retour à la page profil
-      </v-btn>
-    </div>
   </div>
 </template>
 
@@ -72,8 +82,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.card {
-  border-left: solid 6px;
-  border-left-color: #0d47a1;
-}
 </style>

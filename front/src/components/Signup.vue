@@ -53,7 +53,7 @@
             </v-card-text>
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn color="primary" :disabled="email && password && last_name && first_name == ''" @click="register">S'inscrire</v-btn>
+              <v-btn color="primary" :disabled="email && password && last_name && first_name == ''" @click="register()">S'inscrire</v-btn>
             </v-card-actions>
         </v-card>
       </v-flex>
