@@ -10,7 +10,7 @@
           <v-img v-if="post.imageUrl" height="200px" :src="post.imageUrl">
             <v-app-bar flat color="rgba(0, 0, 0, 0)" >
               <v-toolbar-title class="text-subtitle-2 white--text pl-0">
-                Posté le : {{ dateParser(post.createdAt) }}
+                Posté le {{ dateParser(post.createdAt) }}
               </v-toolbar-title>
               <v-spacer></v-spacer>
                 <v-col cols="2" class="pa-0 d-flex text-center justify-end align-end" v-if="post.UserId == UserId || userAdmin === true">
@@ -105,7 +105,7 @@
           </v-img>
           <v-card-text>
             <div class="font-weight-bold ml-8 mb-2">
-              {{ post.User.first_name }} à écris :
+              {{ post.User.first_name }} a écrit :
             </div>
             <div class="offset-md-1 mx-auto">
               <v-alert

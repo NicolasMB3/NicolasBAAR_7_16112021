@@ -2,7 +2,7 @@
   <v-app>
     <v-img
       src="./assets/duotone.png"
-      max-height="80"
+      max-height="75"
       class="grey darken-4 d-flex align-center">
       <v-img width="226" class="ml-6" src="./assets/groupomania.svg"></v-img>
     </v-img>
@@ -41,5 +41,6 @@ export default {
   }
 };
 </script>
+
 <style lang="scss" scoped>
 </style>
