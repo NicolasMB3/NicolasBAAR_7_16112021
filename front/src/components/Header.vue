@@ -55,33 +55,31 @@ export default {
   },
   methods: {
     navigateTo(route) {
-      this.$router.push(route);
+      this.$router.push(route).catch(()=>{});
     },
-    logout() { // fonction pour la decconnexion de l'utilisateur
+    logout() {
       this.$store.dispatch("setToken", null);
       this.$store.dispatch("setUser", null);
       localStorage.removeItem("accessToken");
       localStorage.removeItem("user");
-      this.$router.push({
-        name: "Login",
-      });
+      this.$router.push({name: "Login"}).catch(()=>{});
     },
     showUsers() {
       const router = this.$router;
       setTimeout(function () {
-        router.push("/users");
+        router.push("/users").catch(()=>{});
       }, 10);
     },
     profil(userId) {
       const router = this.$router
       setTimeout(function () {
-        router.push(`/profil/${userId}`)
+        router.push(`/profil/${userId}`).catch(()=>{});
       }, 10)
     },
     backToPostsPage() {
       const router = this.$router;
       setTimeout(function () {
-        router.push("/posts");
+        router.push("/posts").catch(()=>{});
       }, 10);
     }
   },

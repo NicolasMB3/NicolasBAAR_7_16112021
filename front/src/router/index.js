@@ -3,9 +3,9 @@ import VueRouter from "vue-router";
 import Login from "@/components/Login.vue";
 import Signup from "@/components/Signup.vue";
 import Posts from "@/components/Posts.vue";
-import OnePost from "@/components/OnePost.vue";
+import Post from "@/components/Post.vue";
 import Profil from "@/components/Profil.vue";
-import Users from "@/components/AllUser.vue"
+import Users from "@/components/Users.vue"
 
 Vue.use(VueRouter);
 
@@ -27,8 +27,8 @@ const routes = [
   },
   {
     path: "/posts/:id",
-    name: "OnePost",
-    component: OnePost,
+    name: "Post",
+    component: Post,
   }, 
   {
     path: "/profil/:id",

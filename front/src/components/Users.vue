@@ -62,7 +62,6 @@ export default {
   },
   async mounted() { //fonction qui permet de réccupérer tous les utilisateurs
     this.users = (await UserServices.getAllUsers()).data;
-    console.log("ici", this.users);
   },
   methods: {
     async deleteAccount(id) { //fonction pour supprimer un compte
@@ -74,7 +73,7 @@ export default {
     profil(userId) { //fonction pour aller à la page profil
       const router = this.$router;
       setTimeout(function () {
-        router.push(`/profil/${userId}`);
+        router.push(`/profil/${userId}`).catch(()=>{});
       }, 10);
     },
   },

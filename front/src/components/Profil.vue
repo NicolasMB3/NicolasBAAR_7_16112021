@@ -82,7 +82,7 @@ export default {
       await UserServices.deleteAccount(this.id);
       const router = this.$router;
       setTimeout(function () {
-        router.push("/");
+        router.push("/").catch(()=>{});
       }, 10);
     },
     async updateUser() {
@@ -127,7 +127,7 @@ export default {
     backToPostsPage() {
       const router = this.$router;
       setTimeout(function () {
-        router.push("/posts");
+        router.push("/posts").catch(()=>{});
       }, 10);
     },
 

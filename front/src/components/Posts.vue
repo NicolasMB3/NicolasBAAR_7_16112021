@@ -339,7 +339,7 @@ export default {
     profil(userId) {
       const router = this.$router
       setTimeout(function () {
-        router.push(`/profil/${userId}`)
+        router.push(`/profil/${userId}`).catch(()=>{})
       }, 10)
     },
   },

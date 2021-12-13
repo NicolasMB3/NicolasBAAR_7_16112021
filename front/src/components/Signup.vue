@@ -87,7 +87,7 @@ export default {
         });
         const router = this.$router;
         setTimeout(function () {
-          router.push("/");
+          router.push("/").catch(()=>{});
         }, 10);
       } catch (error) {
         this.error = error.response.data.error;
@@ -96,7 +96,7 @@ export default {
     login() {
       const router = this.$router;
       setTimeout(function () {
-        router.push("/");
+        router.push("/").catch(()=>{});
       }, 10);
     },
   },

@@ -78,7 +78,7 @@ export default {
         this.$store.dispatch("setUserId", response.data.UserId);
         const router = this.$router;
         setTimeout(function () {
-          router.push("/posts");
+          router.push("/posts").catch(()=>{});
           location.reload(true);
         }, 10);
       } catch (error) {
@@ -88,7 +88,7 @@ export default {
     signup() {
       const router = this.$router;
       setTimeout(function () {
-        router.push("/signup");
+        router.push("/signup").catch(()=>{});
       }, 10);
     },
   },
