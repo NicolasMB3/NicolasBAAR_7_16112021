@@ -16,9 +16,6 @@ export default {
   deletePost(id) {
     return Api().delete("posts/" + id);
   },
-  likeOrDislikePost(id) {
-    return Api().post("posts/" + id) + "/like";
-  },
   createComment(data) {
     return Api().post("posts/comment", data);
   },
