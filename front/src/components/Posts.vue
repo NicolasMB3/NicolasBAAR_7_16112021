@@ -3,7 +3,6 @@
     <WelcomeToUser />
     <div v-html="error" />
     <NewPost />
-
     <v-container class="mt-6" v-for="(post, index) in posts" :key="index">
       <v-row justify="space-around">
         <v-card width="900">
@@ -31,7 +30,7 @@
 
                       <v-list>
                         <v-list-item>
-                          <v-btn color="primary" class="mx-3" @click="messageToEdit(post)">
+                          <v-btn color="primary" class="mx-3" @click="messageToEdit(post)" v-if="post.UserId == UserId">
                             Editer
                           </v-btn>
                           <v-btn color="error" class="mx-3" @click="deleteMessage(post.id)">
@@ -79,7 +78,7 @@
 
                       <v-list>
                         <v-list-item>
-                          <v-btn color="primary" class="mx-3" @click="messageToEdit(post)">
+                          <v-btn color="primary" class="mx-3" @click="messageToEdit(post)" v-if="post.UserId == UserId">
                             Editer
                           </v-btn>
                           <v-btn color="error" class="mx-3" @click="deleteMessage(post.id)">
@@ -150,7 +149,7 @@
                       :
                       {{ comment.text }}
                     </v-card-text>
-                    <v-icon class="cross" color="error" @click="deleteComment(comment.id)">mdi-delete</v-icon>
+                    <v-icon v-if="comment.UserId == UserId || userAdmin === true" class="cross" color="error" @click="deleteComment(comment.id)">mdi-delete</v-icon>
                   </div>
                 </div>
               </v-expand-transition>
@@ -267,7 +266,6 @@ export default {
     uploadImage() {
       this.file = this.$refs.file.files[0]
       this.fileName = this.file.name
-      console.log(this.file)
     },
     async publishPost() {
       try {

@@ -31,9 +31,9 @@
         </h2>
       </v-col>
       <v-spacer></v-spacer>
-      <v-col class="d-flex flex-row-reverse" v-if="user.id == UserId || userAdmin === true">
+      <v-col class="d-flex flex-row-reverse">
         <v-tooltip bottom>
-          <template v-slot:activator="{ on, attrs }">
+          <template v-if="user.id == UserId || userAdmin === true" v-slot:activator="{ on, attrs }">
             <v-icon color="error" left @click="deleteAccount(user.id)" v-bind="attrs" v-on="on"> mdi-delete </v-icon>
           </template>
           <span>Supprimer le profil</span>
