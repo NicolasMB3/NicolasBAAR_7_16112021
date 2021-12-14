@@ -52,6 +52,7 @@
 <script>
 import UserServices from "@/services/UserServices.js";
 let user = JSON.parse(localStorage.getItem("user"));
+
 export default {
   data() {
     return {
@@ -60,20 +61,21 @@ export default {
       userAdmin: user.isAdmin,
     };
   },
-  async mounted() { //fonction qui permet de réccupérer tous les utilisateurs
+  async mounted() {
     this.users = (await UserServices.getAllUsers()).data;
+    console.log(this.users);
   },
   methods: {
-    async deleteAccount(id) { //fonction pour supprimer un compte
+    async deleteAccount(id) {
       await UserServices.deleteAccount(id);
       setTimeout(function () {
         location.reload(true);
       }, 10);
     },
-    profil(userId) { //fonction pour aller à la page profil
+    profil(userId) {
       const router = this.$router;
       setTimeout(function () {
-        router.push(`/profil/${userId}`).catch(()=>{});
+        router.push(`/profil/${userId}`);
       }, 10);
     },
   },

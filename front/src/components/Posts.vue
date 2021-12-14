@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <WelcomeToUser />
+    <Welcome />
     <div v-html="error" />
     <NewPost />
     <v-container class="mt-6" v-for="(post, index) in posts" :key="index">
@@ -214,7 +214,7 @@
 
 import PostServices from '@/services/PostServices'
 import NewPost from '@/components/NewPost.vue'
-import WelcomeToUser from '@/components/WelcomeToUser.vue'
+import Welcome from '@/components/Welcome.vue'
 
 let user = JSON.parse(localStorage.getItem('user'))
 
@@ -252,7 +252,7 @@ export default {
   },  
   components: {
     NewPost,
-    WelcomeToUser,
+    Welcome,
   },
   methods: {
     commentPost(postId) {

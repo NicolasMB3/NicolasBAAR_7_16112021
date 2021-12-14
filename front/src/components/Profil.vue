@@ -1,43 +1,149 @@
 <template>
   <v-container>
-    <v-card class="mx-auto" max-width="900" height="400px">
-    <v-img class="white--text align-end" height="150px" src="@/assets/duotone.png">
+    <v-card
+    class="mx-auto my-6"
+    max-width="900"
+  >
+
+      <v-img
+        height="250"
+        src="@/assets/duotone.png"
+      ></v-img>
+
       <v-card-title>
         <v-avatar rounded size="64">
           <v-img :src="user.avatar"></v-img>
         </v-avatar>
         <span class="ml-4">{{ user.first_name }} {{ user.last_name }}</span>
       </v-card-title>
-    </v-img>
-    <v-card-subtitle class="pb-0">
-      <span>Membre depuis: {{ dateParser(user.createdAt) }}</span>
-    </v-card-subtitle>
-      <v-btn
-        tile
-        color="success"
-      >
-        <v-icon left>
-          mdi-pencil
-        </v-icon>
-        Modifier
-      </v-btn>
 
-      <v-btn
-        tile
-        color="error"
-      >
-        <v-icon left>
-          mdi-delete
-        </v-icon>
-        Supprimer
-      </v-btn>
-  </v-card>
+      <v-card-text>
+        <div class="my-2 text-subtitle-1">
+          <v-alert
+            dense
+            text
+            type="success"
+          >
+            Membre depuis : {{ dateParser(user.createdAt) }}
+          </v-alert>
+        </div>
+      </v-card-text>
+
+      <v-divider class="mx-4"></v-divider>
+
+      <v-card-title>🐱‍🏍Action/information sur le compte</v-card-title>
+
+      <v-card-text>
+        <v-alert
+          dense
+          text
+          type="info"
+        >
+      <span>{{ user.first_name }} {{ user.last_name }} est un : </span>
+        <template v-if="user.isAdmin">
+          <v-icon color="primary" small>mdi-gavel</v-icon>
+          <span class="ml-1" color="primary">Administrateur</span>
+        </template>
+        <template v-else>
+          <v-icon color="green" small>mdi-user</v-icon>
+          <span class="ml-1" color="primary">Utilisateur</span>
+        </template>
+        </v-alert>
+      </v-card-text>
+
+      <v-card-actions  class="d-flex justify-center mb-2">
+        <v-btn color="error" class="mx-3" @click="deleteAccount">
+          Supprimer le compte
+        </v-btn>
+
+        <v-btn color="primary" class="mx-3" @click="editTheName()">
+          Éditer le compte
+        </v-btn>
+
+        <v-btn color="primary" class="mx-3" @click="elementToEdit">
+          Changer de photo
+        </v-btn>
+      </v-card-actions>
+
+      <v-dialog v-model="dialog" width="500">
+        <v-card>
+          <v-col cols="12" sm="12">
+            <input
+              type="file"
+              ref="file"
+              accept="image/png, image/jpeg, image/bmp"
+              placeholder="Choisir une nouvelle photo"
+              prepend-icon="mdi-camera"
+              label="Avatar"
+              name="image"
+              @change="uploadImage"
+            />
+          </v-col>
+
+          <v-divider></v-divider>
+
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn
+              color="primary"
+              text
+              @click="updateUser(), (dialog = false)"
+            >
+              Valider
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+
+      <v-dialog v-model="editname" width="500">
+        <v-card>
+          <v-col cols="12" sm="12">
+            <v-text-field
+              v-model="usernameEdit.first_name"
+              label="Changer mon prénom"
+              required
+              :rules="inputRules"
+            ></v-text-field>
+          </v-col>
+
+          <v-col cols="12" sm="12">
+            <v-text-field
+              v-model="usernameEdit.last_name"
+              label="Changer mon nom"
+              required
+              :rules="inputRules"
+            ></v-text-field>
+          </v-col>
+          <v-col cols="12" sm="12">
+            <v-text-field
+              v-model="password"
+              label="Changer mon mot de passe"
+              required
+              :rules="inputPasswordRules"
+            ></v-text-field>
+          </v-col>
+
+          <v-divider></v-divider>
+
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn
+              color="primary"
+              text
+              @click="updateTheName(usernameEdit), (editname = false)"
+            >
+              Valider
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </v-card>
   </v-container>
 </template>
 
 <script>
 import UserServices from "@/services/UserServices";
-
+import PostServices from "@/services/PostServices";
 let user = JSON.parse(localStorage.getItem("user"));
 
 export default {
@@ -59,6 +165,7 @@ export default {
       first_name: "",
       password: "",
       file: "",
+      message: {},
       usernameEdit: new Object(),
     };
   },
@@ -66,6 +173,8 @@ export default {
   computed: {},
 
   async mounted() {
+    const messageId = this.$route.params.id;
+    this.message = (await PostServices.getAllPosts(`${messageId}`)).data;
     try {
       this.id = this.$route.params.id;
       const response = await UserServices.getOneUser(this.id);
@@ -147,28 +256,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.v-toolbar__title {
-  color: white;
-  font-weight: bold;
-
-  font-size: 1.1rem;
-  font-display: roboto;
-}
-
-.btn {
-  color: white;
-  font-weight: bold;
-  text-decoration: underline;
-}
-
-img {
-  width: 95%;
-  height: auto;
-}
-
-.v-application a {
-  color: #01579b;
-  text-decoration: underline;
-  font-weight: bold;
+.v-card__actions > .v-btn.v-btn {
+    margin-bottom: 1.5rem;
 }
 </style>

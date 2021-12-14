@@ -9,10 +9,9 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     token: null,
-    user: {},
+    user: null,
     UserId: null,
     isUserLoggedIn: false,
-    message: [],
     posts: [],
     
   },
@@ -32,9 +31,6 @@ export default new Vuex.Store({
     },
     setUserId(state, UserId) {
       state.UserId = UserId;
-    },
-    setMessage(state, message) {
-      state.message = message;
     },
     SET_USER(state, user) {
       state.user = user;

@@ -72,8 +72,6 @@ export default {
         const user = response.data.user;
         localStorage.setItem("user", JSON.stringify(user));
         localStorage.setItem("accessToken", response.data.token);
-
-        console.log(response);
         this.$store.dispatch("setToken", response.data.token);
         this.$store.dispatch("setUserId", response.data.UserId);
         const router = this.$router;

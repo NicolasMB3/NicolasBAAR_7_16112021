@@ -25,7 +25,6 @@ export default {
   name: 'App',
 
   data: () => ({
-    //
   }),
   components: {
     PageHeader, 
