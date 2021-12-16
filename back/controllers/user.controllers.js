@@ -1,5 +1,8 @@
 const { User } = require("../models");
+// Next : replace bcrypt with CryptoJS
+// Allows to easily create a hash out of a password string
 const bcrypt = require("bcrypt");
+// JSON Web Token is a compact URL-safe means of representing claims to be transferred between two parties.
 const jwt = require("jsonwebtoken");
 const fs = require("fs");
 

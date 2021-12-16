@@ -13,9 +13,7 @@ module.exports = {
     if (error) {
       switch (error.details[0].context.key) {
         case "email":
-          res
-            .status(400)
-            .json({ error: "Please enter a valid email address" });
+          res.status(400).json({ error: "Please enter a valid email address" });
           break;
         case "password":
           res.status(400).json({ error: 'Please enter a valid password' });

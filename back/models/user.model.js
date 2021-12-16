@@ -24,6 +24,7 @@ module.exports = (sequelize, DataTypes) => {
     avatar: {
       type: DataTypes.STRING,
       allowNull: true,
+      // Remplace this value (bug image when replace need to be fix)
       defaultValue: 'http://localhost:5000/images/default/default.jpeg',
     },
 
