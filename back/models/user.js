@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true,
       // Remplace this value (bug image when replace need to be fix)
-      defaultValue: 'http://localhost:5000/images/default/default.jpeg',
+      defaultValue: 'http://localhost:5000/images/default/default.jpg',
     },
 
     isAdmin: {
