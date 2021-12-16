@@ -10,7 +10,6 @@ const fs = require("fs");
 exports.signup = async (req, res, next) => {
   try {
     const hash = await bcrypt.hash(req.body.password, 10);
-
     const user = new User({
       first_name: req.body.first_name,
       last_name: req.body.last_name,
@@ -27,7 +26,7 @@ exports.signup = async (req, res, next) => {
       }),
     });
   } catch (error) {
-    res.status(400).json({ error: "Cet e-mail est déjà utilisé" });
+    res.status(400).json({ error: "Email already in use" });
   }
 };
 
@@ -39,11 +38,11 @@ exports.login = async (req, res, next) => {
     });
 
     if (!user) {
-      return res.status(401).json({ error: "Utilisateur non trouvé" });
+      return res.status(401).json({ error: "User not found" });
     }
     const valid = await bcrypt.compare(req.body.password, user.password);
     if (!valid) {
-      return res.status(401).json({ error: "Mot de passe incorrect" });
+      return res.status(401).json({ error: "Incorrect password" });
     }
 
     res.status(200).json({
@@ -66,14 +65,14 @@ exports.deleteAccount = async (req, res, next) => {
       const filename = user.avatar.split("/images/")[1];
       fs.unlink(`images/${filename}`, () => {
         User.destroy({ where: { id: req.params.id } });
-        res.status(200).json({ message: "Utilisateur supprimé" });
+        res.status(200).json({ message: "User deleted" });
       });
     } else {
       User.destroy({ where: { id: req.params.id } });
-      res.status(200).json({ message: "utilisateur supprimé" });
+      res.status(200).json({ message: "User deleted" });
     }
   } catch (error) {
-    return res.status(500).send({ error: "Erreur serveur" });
+    return res.status(500).send({ error });
   }
 };
 
@@ -114,8 +113,9 @@ exports.modifyAccount = async (req, res, next) => {
       }`;
       const filename = user.avatar.split("/images/")[1];
       fs.unlink(`images/${filename}`, (err) => {
-        if (err) console.log(err);
-        else {
+        if (err) {
+          console.log(err);
+        } else {
           console.log(`Deleted file: images/${filename}`);
         }
       });
@@ -142,9 +142,9 @@ exports.modifyAccount = async (req, res, next) => {
     });
     res.status(200).json({
       user: newUser,
-      messageRetour: "Votre profil a bien été modifié",
+      messageRetour: "Profile modified",
     });
   } catch (error) {
-    return res.status(500).send({ error: "Server error, please contact administrator" });
+    return res.status(500).send({ error });
   }
 };

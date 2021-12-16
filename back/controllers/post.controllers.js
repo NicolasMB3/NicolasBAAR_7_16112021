@@ -60,7 +60,7 @@ exports.createPost = async (req, res, next) => {
         imageUrl: image,
         UserId: user.id,
       });
-      res.status(201).json({ post: post, message: "Your message has been deleted" });
+      res.status(201).json({ post: post, message: "Message deleted" });
     } else {
       res.status(400).send({ error: "Erreur " });
     }
@@ -96,7 +96,7 @@ exports.updatePost = async (req, res, next) => {
     const newPost = await post.save({
       fields: ["message", "imageUrl"],
     });
-    res.status(200).json({ newPost: newPost, message: "Your message has been edited" });
+    res.status(200).json({ newPost: newPost, message: "Message edited" });
   } catch (error) {
     return res.status(500).send({ error });
   }

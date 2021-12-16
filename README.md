@@ -61,11 +61,23 @@ Un fois Node.js correctement installé (dans le dossier front, mais aussi dans l
 
 1. Lancer le serveur back-end
    ```sh
-   node server
+   node run server
    ```
 2. Lancer le serveur front-end
    ```sh
    npm run serve
+   ```
+3. Créer une base de donnée avec le nom groupomania
+   ```sh
+   CREATE DATABASE groupomania;
+   ```
+4. Créer un fichier .env dans le dossier back
+   ```js
+   DB_HOST=localhost
+   DB_USER=root
+   DB_PASSWORD=password
+   DB_NAME=groupomania
+   JWT_TOKEN=SECRET_KEY
    ```
 Une fois le serveur back-end et front-end allumés, une page devrait s'ouvrir automatiquement sur votre navigateur préféré 🎉
 
