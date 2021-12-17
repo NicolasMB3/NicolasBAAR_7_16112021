@@ -44,11 +44,21 @@
           <span class="ml-1" color="primary">Administrateur</span>
         </template>
         <template v-else>
-          <v-icon color="green" small>mdi-user</v-icon>
+          <v-icon color="green" small>mdi-account</v-icon>
           <span class="ml-1" color="primary">Utilisateur</span>
         </template>
         </v-alert>
       </v-card-text>
+
+      <v-alert
+        dense
+        text
+        type="success"
+        class="mx-10"
+        v-if="deleteMessage"
+      >
+        {{ deleteMessage }}
+      </v-alert>
 
       <v-card-actions class="d-flex justify-center mb-2">
         <v-btn color="error" v-if="user.id == UserId || userAdmin === true" class="mx-3" @click="deleteAccount">
@@ -165,6 +175,7 @@ export default {
       password: "",
       file: "",
       message: {},
+      deleteMessage: "",
       usernameEdit: new Object(),
     };
   },
@@ -188,10 +199,17 @@ export default {
     async deleteAccount() {
       this.id = this.$route.params.id;
       await UserServices.deleteAccount(this.id);
+      this.deleteMessage = "Suppression du compte confirmé, redirection ..."
       const router = this.$router;
+      const store = this.$store;
       setTimeout(function () {
-        router.push("/").catch(()=>{});
-      }, 10);
+        store.dispatch("setToken", null);
+        store.dispatch("setUser", null);
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("user");
+        router.push({name: "Login"}).catch(()=>{});
+        this.$store.state.isUserLoggedIn = false;
+      }, 2000);
     },
     async updateUser() {
       try {

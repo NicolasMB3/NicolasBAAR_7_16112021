@@ -52,6 +52,25 @@
                 ></v-text-field>
               </v-form>
             </v-card-text>
+            <v-alert
+              dense
+              text
+              type="success"
+              class="mx-5"
+              v-if="validateForm"
+            >
+              {{ validateForm }}
+            </v-alert>
+            <v-alert
+              dense
+              outlined
+              type="error"
+              class="mx-5"
+              v-if="error"
+              @click="error = ''"
+            >
+              {{ errorMessage }}
+            </v-alert>
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn color="primary" :disabled="email && password && last_name && first_name == ''" @click="register()">S'inscrire</v-btn>
@@ -71,6 +90,7 @@ export default {
       email: "",
       password: "",
       error: null,
+      validateForm: "",
       rules: [
         value => !!value || 'Obligatoire',
         value => (value && value.length >= 3) || 'Minimum 3 caractères',
@@ -93,18 +113,19 @@ export default {
           password: this.password,
         });
         const router = this.$router;
+        this.validateForm = "Inscription réussi, redirection à la page de connexion"
         setTimeout(function () {
           router.push("/").catch(()=>{});
-        }, 10);
+        }, 2000);
       } catch (error) {
-        this.error = error.response.data.error;
+        this.error = "Un problème est survenue lors de l'inscription, merci de réessayer"
       }
     },
     login() {
       const router = this.$router;
       setTimeout(function () {
         router.push("/").catch(()=>{});
-      }, 10);
+      }, 2000);
     },
   },
 };

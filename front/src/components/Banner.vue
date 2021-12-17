@@ -9,7 +9,7 @@
       colored-border
       icon="mdi-web"
     >
-      Bienvenue sur Groupomania {{ first_name }} 👋
+      Bienvenue sur Groupomania <span class="font-weight-black">{{ first_name }}</span> 👋
     </v-alert>
   </div>
 </template>

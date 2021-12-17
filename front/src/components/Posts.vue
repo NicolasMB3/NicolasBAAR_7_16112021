@@ -46,11 +46,13 @@
             <v-card-title class="white--text mt-8">
               <v-avatar size="56">
                 <img
+                  class="customcursor"
                   alt="user"
                   :src="post.User.avatar"
+                  @click="profil(post.UserId)"
                 >
               </v-avatar>
-              <p class="ml-3">
+              <p class="ml-3" @click="profil(post.UserId)">
                 {{ post.User.last_name }} {{ post.User.first_name }}
               </p>
             </v-card-title>
@@ -94,11 +96,13 @@
             <v-card-title class="white--text mt-8">
               <v-avatar size="56">
                 <img
+                  class="customcursor"
                   alt="user"
                   :src="post.User.avatar"
+                  @click="profil(post.UserId)"
                 >
               </v-avatar>
-              <p class="ml-3">
+              <p class="ml-3" @click="profil(post.UserId)">
                 {{ post.User.last_name }} {{ post.User.first_name }}
               </p>
             </v-card-title>
@@ -351,7 +355,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.cross {
+.cross, .ml-3, .customcursor {
   cursor: pointer;
 }
 </style>

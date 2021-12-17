@@ -34,7 +34,7 @@
       <v-col class="d-flex flex-row-reverse">
         <v-tooltip bottom>
           <template v-if="user.id == UserId || userAdmin === true" v-slot:activator="{ on, attrs }">
-            <v-icon color="error" left @click="deleteAccount(user.id)" v-bind="attrs" v-on="on"> mdi-delete </v-icon>
+            <v-icon color="error" left @click="deleteAccount(user.id); snackbar = true" v-bind="attrs" v-on="on"> mdi-delete </v-icon>
           </template>
           <span>Supprimer le profil</span>
         </v-tooltip>
@@ -46,11 +46,17 @@
         </v-tooltip>
       </v-col>
     </v-card>
+
+    <v-snackbar
+      v-model="snackbar"
+    >
+      {{ deleteMessage }}
+    </v-snackbar>
   </div>
 </template>
 
 <script>
-import UserServices from "@/services/UserServices.js";
+import UserServices from "@/services/UserServices";
 let user = JSON.parse(localStorage.getItem("user"));
 
 export default {
@@ -59,6 +65,8 @@ export default {
       users: "",
       UserId: user.id,
       userAdmin: user.isAdmin,
+      snackbar: false,
+      deleteMessage: ""
     };
   },
   async mounted() {
@@ -68,9 +76,17 @@ export default {
   methods: {
     async deleteAccount(id) {
       await UserServices.deleteAccount(id);
+      this.deleteMessage = "Suppression du compte confirmé, redirection ..."
+      const router = this.$router;
+      const store = this.$store;
       setTimeout(function () {
-        location.reload(true);
-      }, 10);
+        store.dispatch("setToken", null);
+        store.dispatch("setUser", null);
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("user");
+        router.push({name: "Login"}).catch(()=>{});
+        this.$store.state.isUserLoggedIn = false;
+      }, 2000);
     },
     profil(userId) {
       const router = this.$router;
