@@ -133,15 +133,15 @@
                   <v-btn
                     icon
                     color="black"
-                    @click=";(show = !show), commentShow(post, post.id)"
+                    @click="toggleActive(index); commentShow(post, post.id)"
                   >
-                    <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down'}}</v-icon>
+                    <v-icon>{{ show.includes(index) ? 'mdi-chevron-up' : 'mdi-chevron-down'}}</v-icon>
                   </v-btn>
                   <span class="mx-1">{{ post.Comments.length }} commentaire(s)</span>
                 </v-col>
               </div>
               <v-expand-transition>
-                <div v-show="show">
+                <div v-show="show.includes(index)">
                   <div
                     v-for="comment in post.Comments"
                     :key="comment.id"
@@ -231,8 +231,9 @@ export default {
     return {
       messages: [],
       dialog: false,
-      comment: false,      
-      show: false,
+      // Boolean -> Array
+      comment: false,  
+      show: [],    
       message: null,
       file: '',
       fileName: '',
@@ -261,6 +262,14 @@ export default {
     Banner,
   },
   methods: {
+    toggleActive(index) {
+      if (this.show.includes(index)) {
+        this.show = this.show.filter(entry => entry !== index);
+
+        return; 
+      }
+      this.show.push(index);
+    },
     commentPost(postId) {
       this.comment = true
       this.currentPostId = postId
