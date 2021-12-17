@@ -4,7 +4,7 @@
   <v-bottom-navigation color="primary" grow>
     <template v-if="$store.state.isUserLoggedIn">
       <v-btn @click="backToPostsPage">
-        <span>Groupomania</span>
+        <span class="text-sm-body-2">Groupomania</span>
         <v-icon>mdi-web</v-icon>
       </v-btn>
     </template>
@@ -12,38 +12,38 @@
     <!-- Society name if not logIn -->
     <template v-else>
       <v-btn>
-        <span>Groupomania</span>
+        <span class="text-sm-body-2">Groupomania</span>
         <v-icon>mdi-web</v-icon>
       </v-btn>
     </template>
 
     <!-- Login form -->
     <v-btn v-if="!$store.state.isUserLoggedIn" @click="navigateTo({ name: 'Login' })">
-      <span>Se connecter</span>
+      <span class="text-sm-body-2">e Sconnecter</span>
       <v-icon>mdi-login</v-icon>
     </v-btn>
 
     <!-- SignUP form -->
     <v-btn v-if="!$store.state.isUserLoggedIn" @click="navigateTo({ name: 'Signup' })">
-      <span>S'inscrire</span>
+      <span class="text-sm-body-2">S'inscrire</span>
       <v-icon>mdi-one-up</v-icon>
     </v-btn>
 
     <!-- Profil page -->    
     <v-btn v-if="$store.state.isUserLoggedIn" @click="profil(UserId)">
-      <span>Mon profil</span>
+      <span class="text-sm-body-2">Profil</span>
       <v-icon>mdi-account</v-icon>
     </v-btn>
 
     <!-- Users list -->
     <v-btn v-if="$store.state.isUserLoggedIn" @click="showUsers()">
-      <span>Utilisateurs</span>
+      <span class="text-sm-body-2">Utilisateurs</span>
       <v-icon>mdi-account-group</v-icon>
     </v-btn>
 
     <!-- LogOut -->
     <v-btn v-if="$store.state.isUserLoggedIn" @click="logout">
-      <span>Se déconnecter</span>
+      <span class="text-sm-body-2">Déconnexion</span>
       <v-icon>mdi-run</v-icon>
     </v-btn>
 

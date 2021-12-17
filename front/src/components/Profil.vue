@@ -60,7 +60,7 @@
         {{ deleteMessage }}
       </v-alert>
 
-      <v-card-actions class="d-flex justify-center mb-2">
+      <v-card-actions class="d-flex justify-center mb-2 flex-wrap">
         <v-btn color="error" v-if="user.id == UserId || userAdmin === true" class="mx-3" @click="deleteAccount">
           Supprimer le compte
         </v-btn>

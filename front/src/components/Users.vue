@@ -10,7 +10,7 @@
       colored-border
       icon="mdi-web"
     >
-      Liste d'utilisateurs enregistrés
+      Liste des utilisateurs enregistrés
     </v-alert>
     <v-card
       max-width="900"
