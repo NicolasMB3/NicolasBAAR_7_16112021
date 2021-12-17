@@ -41,7 +41,7 @@ Liste de tous les languages utilisés pour la création du site :
 
 ## Installation
 
-Pour pouvoir faire fonctionner le site correctement et accéder à toutes les fonctionnalités que propose Piiquante, vous aurez besoin d'installer certains packages :
+Pour pouvoir faire fonctionner le site correctement et accéder à toutes les fonctionnalités que propose Groupomania, vous aurez besoin d'installer certains packages :
 
 ### Prérequis
 
