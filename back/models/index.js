@@ -1,7 +1,7 @@
 // Restricted JavaScript
 'use strict';
 
-// FS for file system module helps us store, access, and manage data on our operating system
+// FS for file system module help to store, access, and manage data on server
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');

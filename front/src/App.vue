@@ -6,7 +6,7 @@
       class="grey darken-4 d-flex align-center">
       <v-img width="226" class="ml-6" src="./assets/groupomania.svg"></v-img>
     </v-img>
-    <PageHeader />
+    <Header />
     <v-main>
       <v-container class="my-8">
         <router-view/>
@@ -18,7 +18,7 @@
 
 <script>
 import { mapActions } from 'vuex';
-import PageHeader from '@/components/Header.vue'
+import Header from '@/components/Header.vue'
 import Footer from '@/components/Footer.vue'
 
 export default {
@@ -27,7 +27,7 @@ export default {
   data: () => ({
   }),
   components: {
-    PageHeader, 
+    Header, 
     Footer,
   },
   methods: {

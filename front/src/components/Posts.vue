@@ -1,8 +1,9 @@
 <template>
   <div class="container">
-    <Welcome />
+    <Banner />
     <div v-html="error" />
     <NewPost />
+    <!-- Display all post in API with v-for (loop) -->
     <v-container class="mt-6" v-for="(post, index) in posts" :key="index">
       <v-row justify="space-around">
         <v-card width="900">
@@ -199,7 +200,8 @@
           </v-col>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <!-- A MODIFIER -->
+            <!-- MODIFY THIS -->
+            <!-- CAUSE SOMES CRASHS -->
             <v-btn color="primary" text @click="editMessage(messageEdit.id), (dialog = false)">
               Publier
             </v-btn>
@@ -214,7 +216,7 @@
 
 import PostServices from '@/services/PostServices'
 import NewPost from '@/components/NewPost.vue'
-import Welcome from '@/components/Welcome.vue'
+import Banner from '@/components/Banner.vue'
 
 let user = JSON.parse(localStorage.getItem('user'))
 
@@ -252,7 +254,7 @@ export default {
   },  
   components: {
     NewPost,
-    Welcome,
+    Banner,
   },
   methods: {
     commentPost(postId) {
@@ -323,6 +325,7 @@ export default {
       location.reload(true)
     },
     dateParser(num) {
+      // Display LocalTime in profil page
       let options = {
         hour: '2-digit',
         minute: '2-digit',
@@ -338,6 +341,7 @@ export default {
     },
     profil(userId) {
       const router = this.$router
+      // Get router for profil ID
       setTimeout(function () {
         router.push(`/profil/${userId}`).catch(()=>{})
       }, 10)

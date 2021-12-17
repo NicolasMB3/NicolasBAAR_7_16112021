@@ -40,7 +40,7 @@
                   label="Adresse mail"
                   hide-details="auto"
                   autocomplete="off"
-                  :rules="rules"
+                  :rules="emailValidate"
                 ></v-text-field>
                 <v-text-field
                   prepend-icon="mdi-lock"
@@ -48,6 +48,7 @@
                   label="Mot de passe"
                   type="password"
                   autocomplete="off"
+                  :rules="passwordValidate"
                 ></v-text-field>
               </v-form>
             </v-card-text>
@@ -73,6 +74,12 @@ export default {
       rules: [
         value => !!value || 'Obligatoire',
         value => (value && value.length >= 3) || 'Minimum 3 caractères',
+      ],
+      emailValidate: [
+        value => (value.toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/))  || 'Merci de rentrer une addresse mail valide',
+      ],
+      passwordValidate: [
+        value => (value.toLowerCase().match(/^[a-zA-Z0-9]{6,30}$/)) || 'Les mots de passe doivent avoir une majuscule et encore 6 et 30 caractères',
       ]
     };
   },

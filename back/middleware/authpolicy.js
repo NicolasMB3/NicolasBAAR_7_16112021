@@ -5,6 +5,7 @@ module.exports = {
     // Joi = 
     // Module for data validation. This module validates the data based on schemas
     const schema = Joi.object({
+      // https://joi.dev/api/?v=17.5.0
       first_name: Joi.string().alphanum().min(3).max(30).required(),
       last_name: Joi.string().alphanum().min(3).max(30).required(),
       email: Joi.string().email().lowercase().required(),

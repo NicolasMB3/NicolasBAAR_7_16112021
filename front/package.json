@@ -1,6 +1,7 @@
 {
-  "name": "frontend",
-  "version": "0.1.0",
+  "name": "front",
+  "version": "1.0.0",
+  "description": "Projet (front) P7 pour OpenClassrooms",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",

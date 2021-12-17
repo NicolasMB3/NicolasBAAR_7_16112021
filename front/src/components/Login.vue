@@ -24,7 +24,7 @@
                     label="Adresse mail"
                     type="text"
                     v-model="email"
-                    :rules="rules"
+                    :rules="emailValidate"
                   ></v-text-field>
                   <v-text-field
                     id="password"
@@ -59,6 +59,10 @@ export default {
       rules: [
         value => !!value || 'Obligatoire',
         value => (value && value.length >= 3) || 'Minimum 3 caractères',
+        value => (value && value.length <= 30) || 'Maximum 30 caractères',
+      ],
+      emailValidate: [
+        value => (value.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/))  || 'Merci de rentrer une addresse mail valide',
       ]
     };
   },
