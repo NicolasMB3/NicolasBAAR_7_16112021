@@ -109,14 +109,6 @@ exports.modifyAccount = async (req, res, next) => {
       newPhoto = `${req.protocol}://${req.get("host")}/images/${
         req.file.filename
       }`;
-      const filename = user.avatar.split("/images/")[1];
-      fs.unlink(`images/${filename}`, (err) => {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log(`Deleted file: images/${filename}`);
-        }
-      });
     } else if (req.file) {
       newPhoto = `${req.protocol}://${req.get("host")}/images/${
         req.file.filename

@@ -103,7 +103,7 @@ export default {
         value => (value.toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/))  || 'Merci de rentrer une addresse mail valide',
       ],
       passwordValidate: [
-        value => (value.toLowerCase().match(/^[a-zA-Z0-9]{6,30}$/)) || 'Les mots de passe doivent avoir une majuscule et encore 6 et 30 caractères',
+        value => (value.match(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/)) || 'Le mots de passe doit contenir : un nombre, huits caractères et un caractère spécial',
       ]
     };
   },

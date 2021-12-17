@@ -92,7 +92,7 @@ export default {
   methods: {
     async deleteAccount(id) {
       await UserServices.deleteAccount(id);
-      this.deleteMessage = "Suppression du compte confirmé, redirection ..."
+      this.deleteMessage = "Suppression du compte confirmée, redirection ..."
       // See advance problem about this in function
       const router = this.$router;
       const store = this.$store;
@@ -103,11 +103,11 @@ export default {
         localStorage.removeItem("user");
         router.push({name: "Login"}).catch(()=>{});
         this.$store.state.isUserLoggedIn = false;
-      }, 2000);
+      }, 2500);
     },
     async deleteAccountAdmin(id) {
       await UserServices.deleteAccount(id);
-      this.deleteMessageAdmin = "Suppression du compte confirmé, actualisation ..."
+      this.deleteMessageAdmin = "Suppression du compte confirmée, actualisation ..."
       setTimeout(function () {
         location.reload(true);
       }, 10);

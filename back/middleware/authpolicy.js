@@ -10,7 +10,10 @@ module.exports = {
       last_name: Joi.string().alphanum().min(3).max(30).required(),
       email: Joi.string().email().lowercase().required(),
       // New regEx pattern for password validation
-      password: Joi.string().pattern(new RegExp('^[a-zA-Z0-9]{6,30}$')),
+      // 8 caracters
+      // 1 Uppercase & 1 lowercase & 1 number
+      // 1 special character
+      password: Joi.string().pattern(new RegExp(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/)),
     });
 
     const { error, value } = schema.validate(req.body);
