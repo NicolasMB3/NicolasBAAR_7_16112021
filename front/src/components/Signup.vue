@@ -25,6 +25,7 @@
                   hide-details="auto"
                   autocomplete="off"
                   :rules="rules"
+                  @click="error = null"
                 ></v-text-field>
                 <v-text-field
                   prepend-icon="mdi-account"
@@ -33,6 +34,7 @@
                   hide-details="auto"
                   autocomplete="off"
                   :rules="rules"
+                  @click="error = null"
                 ></v-text-field>
                 <v-text-field
                   prepend-icon="mdi-at"
@@ -41,6 +43,7 @@
                   hide-details="auto"
                   autocomplete="off"
                   :rules="emailValidate"
+                  @click="error = null"
                 ></v-text-field>
                 <v-text-field
                   prepend-icon="mdi-lock"
@@ -49,6 +52,7 @@
                   type="password"
                   autocomplete="off"
                   :rules="passwordValidate"
+                  @click="error = null"
                 ></v-text-field>
               </v-form>
             </v-card-text>
@@ -67,9 +71,9 @@
               type="error"
               class="mx-5"
               v-if="error"
-              @click="error = ''"
+              @click="error = null"
             >
-              {{ errorMessage }}
+              {{ error }}
             </v-alert>
             <v-card-actions>
               <v-spacer></v-spacer>
@@ -118,7 +122,7 @@ export default {
           router.push("/").catch(()=>{});
         }, 2000);
       } catch (error) {
-        this.error = "Un problème est survenue lors de l'inscription, merci de réessayer"
+        this.error = "Merci de remplir toutes les conditions demandées"
       }
     },
     login() {
