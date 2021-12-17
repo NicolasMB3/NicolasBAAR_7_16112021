@@ -26,9 +26,9 @@
 Le site Groupomania est un projet produit par Nicolas pour la formation de développeur web à OpenClassrooms.
 
 Contenance du site :
-* Création de pages dynamiques pour afficher les produits,
-* Utilisation de Javascript, Node.js, JWT, Express et VueJS 3,
-* Création de poste, suppression et modification.
+* Création de pages dynamiques pour afficher les commentaires,
+* Utilisation de Javascript, Node.js, JWT, Express, Joi, Sequelize et VueJS 3,
+* Création de messages/commentaires, suppression et modification.
 
 ## Développer avec :
 
@@ -73,10 +73,6 @@ Un fois Node.js correctement installé (dans le dossier front, mais aussi dans l
    ```
 4. Créer un fichier .env dans le dossier back
    ```js
-   DB_HOST=localhost
-   DB_USER=root
-   DB_PASSWORD=password
-   DB_NAME=groupomania
    JWT_TOKEN=SECRET_KEY
    ```
 Une fois le serveur back-end et front-end allumés, une page devrait s'ouvrir automatiquement sur votre navigateur préféré 🎉

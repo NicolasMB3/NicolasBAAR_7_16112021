@@ -4,7 +4,6 @@
     class="mx-auto my-6"
     max-width="900"
   >
-
       <v-img
         height="250"
         src="@/assets/duotone.png"
