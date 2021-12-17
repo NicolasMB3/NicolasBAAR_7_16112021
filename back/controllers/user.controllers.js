@@ -63,10 +63,8 @@ exports.deleteAccount = async (req, res, next) => {
     const user = await User.findOne({ where: { id: req.params.id } });
     if (user.avatar !== null) {
       const filename = user.avatar.split("/images/")[1];
-      fs.unlink(`images/${filename}`, () => {
-        User.destroy({ where: { id: req.params.id } });
-        res.status(200).json({ message: "User deleted" });
-      });
+      User.destroy({ where: { id: req.params.id } });
+      res.status(200).json({ message: "User deleted" });
     } else {
       User.destroy({ where: { id: req.params.id } });
       res.status(200).json({ message: "User deleted" });

@@ -32,11 +32,17 @@
       </v-col>
       <v-spacer></v-spacer>
       <v-col class="d-flex flex-row-reverse">
-        <v-tooltip bottom>
-          <template v-if="user.id == UserId || userAdmin === true" v-slot:activator="{ on, attrs }">
+        <v-tooltip v-if="user.id == UserId && userAdmin === false" bottom>
+          <template v-slot:activator="{ on, attrs }">
             <v-icon color="error" left @click="deleteAccount(user.id); snackbar = true" v-bind="attrs" v-on="on"> mdi-delete </v-icon>
           </template>
           <span>Supprimer le profil</span>
+        </v-tooltip>
+        <v-tooltip v-if="userAdmin === true" bottom>
+          <template v-slot:activator="{ on, attrs }">
+            <v-icon color="error" left @click="deleteAccountAdmin(user.id); snackbar = true" v-bind="attrs" v-on="on"> mdi-delete </v-icon>
+          </template>
+          <span>Supprimer le profil (admin)</span>
         </v-tooltip>
         <v-tooltip bottom>
           <template v-slot:activator="{ on, attrs }">
@@ -47,10 +53,19 @@
       </v-col>
     </v-card>
 
-    <v-snackbar
+    <v-snackbar 
       v-model="snackbar"
+      absolute
+      bottom
+      color="success"
+      outlined
     >
-      {{ deleteMessage }}
+      <template v-if="deleteMessage != ''">
+        {{ deleteMessage }}
+      </template>
+      <template v-else>
+        {{ deleteMessageAdmin }}
+      </template>
     </v-snackbar>
   </div>
 </template>
@@ -66,6 +81,7 @@ export default {
       UserId: user.id,
       userAdmin: user.isAdmin,
       snackbar: false,
+      deleteMessageAdmin: "",
       deleteMessage: ""
     };
   },
@@ -77,6 +93,7 @@ export default {
     async deleteAccount(id) {
       await UserServices.deleteAccount(id);
       this.deleteMessage = "Suppression du compte confirmé, redirection ..."
+      // See advance problem about this in function
       const router = this.$router;
       const store = this.$store;
       setTimeout(function () {
@@ -87,6 +104,13 @@ export default {
         router.push({name: "Login"}).catch(()=>{});
         this.$store.state.isUserLoggedIn = false;
       }, 2000);
+    },
+    async deleteAccountAdmin(id) {
+      await UserServices.deleteAccount(id);
+      this.deleteMessageAdmin = "Suppression du compte confirmé, actualisation ..."
+      setTimeout(function () {
+        location.reload(true);
+      }, 10);
     },
     profil(userId) {
       const router = this.$router;

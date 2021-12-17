@@ -3,5 +3,5 @@
 /front/node_modules
 /front/package-lock.json
 /back/images/*.gif
-/back/images/*.jpeg
-*.jpg
+/back/images/*.jpg
+/back/images/*.png

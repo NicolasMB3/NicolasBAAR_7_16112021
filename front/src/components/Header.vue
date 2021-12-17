@@ -73,6 +73,7 @@ export default {
       this.$router.push({name: "Login"}).catch(()=>{});
     },
     showUsers() {
+      // See advance problem about this in function
       const router = this.$router;
       setTimeout(function () {
         router.push("/users").catch(()=>{});
