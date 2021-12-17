@@ -50,16 +50,16 @@
         </v-alert>
       </v-card-text>
 
-      <v-card-actions  class="d-flex justify-center mb-2">
-        <v-btn color="error" class="mx-3" @click="deleteAccount">
+      <v-card-actions class="d-flex justify-center mb-2">
+        <v-btn color="error" v-if="user.id == UserId || userAdmin === true" class="mx-3" @click="deleteAccount">
           Supprimer le compte
         </v-btn>
 
-        <v-btn color="primary" class="mx-3" @click="editTheName()">
+        <v-btn color="primary" v-if="user.id == UserId" class="mx-3" @click="editTheName()">
           Éditer le compte
         </v-btn>
 
-        <v-btn color="primary" class="mx-3" @click="elementToEdit">
+        <v-btn color="primary" v-if="user.id == UserId || userAdmin === true" class="mx-3" @click="elementToEdit">
           Changer de photo
         </v-btn>
       </v-card-actions>

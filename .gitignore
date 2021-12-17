@@ -4,3 +4,4 @@
 /front/package-lock.json
 /back/images/*.gif
 /back/images/*.jpeg
+*.jpg

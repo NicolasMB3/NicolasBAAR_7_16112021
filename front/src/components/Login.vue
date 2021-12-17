@@ -25,6 +25,7 @@
                     type="text"
                     v-model="email"
                     :rules="emailValidate"
+                    @click="errorMessage = ''"
                   ></v-text-field>
                   <v-text-field
                     id="password"
@@ -37,6 +38,16 @@
                   ></v-text-field>
               </v-form>
             </v-card-text>
+            <v-alert
+              dense
+              outlined
+              type="error"
+              class="mx-5"
+              v-if="errorMessage"
+              @click="errorMessage = ''"
+            >
+              {{ errorMessage }}
+            </v-alert>
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn color="primary" :disabled="email && password == ''" @click="login">Se connecter</v-btn>
@@ -63,7 +74,8 @@ export default {
       ],
       emailValidate: [
         value => (value.match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/))  || 'Merci de rentrer une addresse mail valide',
-      ]
+      ],
+      errorMessage: '',
     };
   },
   methods: {
@@ -84,7 +96,7 @@ export default {
           location.reload(true);
         }, 10);
       } catch (error) {
-        console.log(error);
+        this.errorMessage = "Aucun compte trouvé, merci de vérifier vos informations de connexion"
       }
     },
     signup() {
