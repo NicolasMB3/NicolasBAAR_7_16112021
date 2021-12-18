@@ -57,7 +57,7 @@ Dans une console Node.js (ou directement avec la console de Visual Studio Code)
 
 ### Installation
 
-Un fois Node.js correctement installé (dans le dossier front, mais aussi dans le dossier back). Vous aurez besoin de lancer les serveurs grâce aux commandes suivantes :
+Une fois Node.js correctement installé (dans le dossier front, mais aussi dans le dossier back). Vous aurez besoin de lancer les serveurs grâce aux commandes suivantes :
 
 1. Lancer le serveur back-end
    ```sh
