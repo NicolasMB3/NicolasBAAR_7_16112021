@@ -19,7 +19,7 @@
 
     <!-- Login form -->
     <v-btn v-if="!$store.state.isUserLoggedIn" @click="navigateTo({ name: 'Login' })">
-      <span class="text-sm-body-2">e Sconnecter</span>
+      <span class="text-sm-body-2">Connexion</span>
       <v-icon>mdi-login</v-icon>
     </v-btn>
 

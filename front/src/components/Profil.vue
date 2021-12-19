@@ -30,7 +30,7 @@
 
       <v-divider class="mx-4"></v-divider>
 
-      <v-card-title>🐱‍🏍Action/information sur le compte</v-card-title>
+      <v-card-title>📌Action/information sur le compte</v-card-title>
 
       <v-card-text>
         <v-alert
