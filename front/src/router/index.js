@@ -4,7 +4,8 @@ import Login from "@/components/Login.vue";
 import Signup from "@/components/Signup.vue";
 import Posts from "@/components/Posts.vue";
 import Profil from "@/components/Profil.vue";
-import Users from "@/components/Users.vue"
+import Users from "@/components/Users.vue";
+import PageNotFound from "@/components/PageNotFound.vue";
 
 Vue.use(VueRouter);
 
@@ -33,6 +34,15 @@ const routes = [
     path: "/users",
     name: "Users",
     component: Users,
+  },
+  {
+    // path: "*",
+    path: "/:catchAll(.*)",
+    name: "NotFound",
+    component: PageNotFound,
+    meta: {
+      requiresAuth: false
+    }
   },
 ];
 
