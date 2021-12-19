@@ -1,9 +1,7 @@
 <template>
   <v-layout class="ma-10" align-center justify-center>
       <v-flex xs12 sm8 md4>
-        <v-img
-         src="../assets/404.svg"
-         ></v-img>
+        <v-img src="../assets/404.svg"></v-img>
          <v-alert
             outlined
             class="mt-5"
@@ -17,12 +15,6 @@
 </template>
 
 <script>
-export default {
-  data() {
-      return {
-      }
-  }
-}
 </script>
 
 <style lang="scss" scoped>
