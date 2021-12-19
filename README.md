@@ -62,6 +62,8 @@ Une fois Node.js correctement installé (dans le dossier front, mais aussi dans 
 1. Lancer le serveur back-end
    ```sh
    node run server
+   ou
+   nodemon server
    ```
 2. Lancer le serveur front-end
    ```sh
