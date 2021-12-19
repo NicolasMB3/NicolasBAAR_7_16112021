@@ -59,23 +59,23 @@ Dans une console Node.js (ou directement avec la console de Visual Studio Code)
 
 Une fois Node.js correctement installé (dans le dossier front, mais aussi dans le dossier back). Vous aurez besoin de lancer les serveurs grâce aux commandes suivantes :
 
-1. Lancer le serveur back-end
+1. Créer une base de donnée avec le nom groupomania
+   ```sh
+   CREATE DATABASE groupomania;
+   ```
+2. Créer un fichier .env dans le dossier back
+   ```js
+   JWT_TOKEN=SECRET_KEY
+   ```
+3. Lancer le serveur back-end
    ```sh
    node run server
    ou
    nodemon server
    ```
-2. Lancer le serveur front-end
+4. Lancer le serveur front-end
    ```sh
    npm run serve
-   ```
-3. Créer une base de donnée avec le nom groupomania
-   ```sh
-   CREATE DATABASE groupomania;
-   ```
-4. Créer un fichier .env dans le dossier back
-   ```js
-   JWT_TOKEN=SECRET_KEY
    ```
 Une fois le serveur back-end et front-end allumés, une page devrait s'ouvrir automatiquement sur votre navigateur préféré 🎉
 
