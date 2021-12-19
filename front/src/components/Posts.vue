@@ -125,6 +125,12 @@
               <v-col width="900" class="d-flex justify-end">
                 <v-btn @click="commentPost(post.id)" color="primary"> 
                   Écrire un commentaire
+                  <v-icon
+                    right
+                    dark
+                  >
+                    mdi-border-color
+                  </v-icon>
                 </v-btn>
               </v-col>
             </div>

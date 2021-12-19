@@ -11,32 +11,38 @@ Vue.use(VueRouter);
 
 const routes = [
   {
+    // Default page
     path: "/",
     name: "Login",
     component: Login,
   },
   {
+    // SignUP page
     path: "/signup",
     name: "Signup",
     component: Signup,
   },
   {
+    // Get all posts
     path: "/posts",
     name: "Posts",
     component: Posts,
   },
   {
+    // Get profil id
     path: "/profil/:id",
     name: "Profil",
     component: Profil,
   },
   {
+    // Get all users
     path: "/users",
     name: "Users",
     component: Users,
   },
   {
-    // path: "*",
+    // Vue3 required to catchAll *
+    // 404 error PageNotFound
     path: "/:catchAll(.*)",
     name: "NotFound",
     component: PageNotFound,
