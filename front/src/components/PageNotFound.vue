@@ -10,7 +10,7 @@
             type="warning"
             prominent
          >
-            La page que vous recherchez n'hésite pas, êtes-vous sûr d'avoir correctement écrit le lien ? 😵‍💫
+            La page que vous recherchez n'existe pas, êtes-vous sûr d'avoir correctement écrit le lien ? 😵‍💫
          </v-alert>
       </v-flex>
   </v-layout>
