@@ -10,6 +10,7 @@ import PageNotFound from "@/components/PageNotFound.vue";
 Vue.use(VueRouter);
 
 const router = new VueRouter({
+  mode: 'history',
   routes: [
     {
       // Default page
