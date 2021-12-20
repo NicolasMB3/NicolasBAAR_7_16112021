@@ -6,8 +6,8 @@ module.exports = {
     // Module for data validation. This module validates the data based on schemas
     const schema = Joi.object({
       // https://joi.dev/api/?v=17.5.0
-      first_name: Joi.string().alphanum().min(3).max(30).required(),
-      last_name: Joi.string().alphanum().min(3).max(30).required(),
+      first_name: Joi.string().min(3).max(30).pattern(new RegExp(/^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/)).required(),
+      last_name: Joi.string().min(3).max(30).pattern(new RegExp(/^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/)).required(),
       email: Joi.string().email().lowercase().required(),
       // New regEx pattern for password validation
       // 8 caracters
