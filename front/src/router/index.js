@@ -43,7 +43,7 @@ const router = new VueRouter({
       component: Users,
     },
     {
-      // Vue3 required to catchAll *
+      // Vue2 required to catchAll *
       // 404 error PageNotFound
       path: "/:catchAll(.*)",
       name: "NotFound",

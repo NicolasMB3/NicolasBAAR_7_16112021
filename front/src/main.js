@@ -5,6 +5,8 @@ import store from './store'
 import vuetify from './plugins/vuetify'
 
 Vue.config.productionTip = false
+// Disable devtools for production
+Vue.config.devtools = false
 
 new Vue({
   router,
