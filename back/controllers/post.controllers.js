@@ -148,8 +148,12 @@ exports.createComment = async (req, res, next) => {
 // Delete commentary
 exports.deleteComment = (req, res, next) => {
   try {
-    Comment.destroy({ where: { id: req.params.id } });
-    res.status(200).json({ message: "Comment has been deleted" });
+    if(post.userId == req.token.UserId || req.token.isAdmin) {
+      Comment.destroy({ where: { id: req.params.id } });
+      res.status(200).json({ message: "Comment has been deleted" });
+    } else {
+      return res.status(403).send({ message: 'Vous n\'avez pas les droits pour ... '});
+    }
   } catch (error) {
     res.status(400).json({ message:"Bad request" });
   }
