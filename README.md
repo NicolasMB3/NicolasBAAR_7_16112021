@@ -66,11 +66,6 @@ Une fois Node.js correctement installé (dans le dossier front, mais aussi dans 
 2. Créer un fichier .env dans le dossier back
    ```js
    JWT_TOKEN=SECRET-KEY
-   DB_USER=USER
-   DB_PASS=PASSWORD
-   DB_NAME=NAME
-   DB_HOST=HOST
-   DB_DIALECT=mysql
    ```
 3. Lancer le serveur back-end
    ```sh
