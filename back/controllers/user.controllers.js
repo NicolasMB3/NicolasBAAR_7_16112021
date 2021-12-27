@@ -47,7 +47,8 @@ exports.login = async (req, res, next) => {
 
     res.status(200).json({
       UserId: user.id,
-      token: jwt.sign({ UserId: user.id }, `${process.env.JWT_RAND_SECRET}`, {
+      // Modify UserId
+      token: jwt.sign({ UserId: user.id, isAdmin: user.isAdmin }, `${process.env.JWT_RAND_SECRET}`, {
         expiresIn: "24h",
       }),
       user,

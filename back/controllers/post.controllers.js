@@ -21,8 +21,6 @@ exports.getPost = async (req, res, next) => {
 // Display one message
 exports.getOnePost = async (req, res, next) => {
   try {
-    const postParams = req.params;
-
     const postFound = await Post.findOne({
       where: { id: postParams.id },
     });
@@ -38,7 +36,7 @@ exports.createPost = async (req, res, next) => {
     let image;
     const user = await User.findOne({
       attributes: ["first_name", "avatar", "last_name", "id"],
-      where: { id: req.body.UserId },
+      where: { id: req.token.UserId },
     });
     if (user !== null) {
       if (req.file) {
@@ -55,7 +53,7 @@ exports.createPost = async (req, res, next) => {
         ],
         message: req.body.message,
         imageUrl: image,
-        UserId: user.id,
+        UserId: req.token.UserId,
       });
       res.status(201).json({ post: post, message: "Message deleted" });
     } else {
@@ -71,49 +69,55 @@ exports.updatePost = async (req, res, next) => {
   try {
     let newImage;
     let post = await Post.findOne({ where: { id: req.params.id } });
-
-    if (req.file) {
-      newImage = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`;
-      if (post.imageUrl) {
-        const filename = post.imageUrl.split("/images/")[1];
-        fs.unlink(`images/${filename}`, (err) => {
-          if (err) console.log(err);
-          else {
-            console.log(`Deleted file: images/${filename}`);
-          }
-        });
+    if(post.userId == req.token.UserId || req.token.isAdmin) {
+      if (req.file) {
+        newImage = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`;
+        if (post.imageUrl) {
+          const filename = post.imageUrl.split("/images/")[1];
+          fs.unlink(`images/${filename}`, (err) => {
+            if (err) console.log(err);
+            else {
+              console.log(`Deleted file: images/${filename}`);
+            }
+          });
+        }
       }
+      if (req.body.message) {
+        post.message = req.body.message;
+      }
+      post.imageUrl = newImage;
+      const newPost = await post.save({
+        fields: ["message", "imageUrl"],
+      });
+      res.status(200).json({ newPost: newPost, message: "Message edited" });
+    } else {
+      return res.status(403).send({ message: 'Vous n\'avez pas les droits pour ... '});
     }
-    if (req.body.message) {
-      post.message = req.body.message;
-    }
-    post.imageUrl = newImage;
-    const newPost = await post.save({
-      fields: ["message", "imageUrl"],
-    });
-    res.status(200).json({ newPost: newPost, message: "Message edited" });
   } catch (error) {
-    return res.status(500).send({ error });
+  return res.status(500).send({ error });
   }
 };
 
 // Delete message
 exports.deletePost = async (req, res, next) => {
   try {
-    const postFound = await Post.findOne({
-      where: { id: req.params.id },
-    });
-    if (postFound.imageUrl != null) {
-      const filename = postFound.imageUrl.split("/images/")[1];
-      fs.unlink(`images/${filename}`, () => {
-        Post.destroy({ where: { id: req.params.id } });
-      });
-      res.status(200).json({ message: "Your message has been deleted" });
-    } else {
-      await Post.destroy({ where: { id: req.params.id } });
-      res.status(200).json({ message: "Your message has been deleted" });
+    const postFound = await Post.findOne({where: { id: req.params.id },});
+      if(postFound.userId == req.token.UserId || req.token.isAdmin) {
+        if (postFound.imageUrl != null) {
+          const filename = postFound.imageUrl.split("/images/")[1];
+          fs.unlink(`images/${filename}`, () => {
+            Post.destroy({ where: { id: req.params.id } });
+          });
+          res.status(200).json({ message: "Your message has been deleted" });
+        } else {
+          await Post.destroy({ where: { id: req.params.id } });
+          res.status(200).json({ message: "Your message has been deleted" });
+        }
+      } else {
+        return res.status(403).send({ message: 'Vous n\'avez pas les droits pour ... '});
+      }
     }
-  } catch (error) {
+    catch (error) {
     res.status(500).json({ error });
   }
 };
@@ -121,10 +125,10 @@ exports.deletePost = async (req, res, next) => {
 // Add new commentary
 exports.createComment = async (req, res, next) => {
   try {
-    const user = await User.findOne({ where: { id: req.body.UserId } });
+    const user = await User.findOne({ where: { id: req.token.UserId } });
     const post = await Post.findOne({ where: { id: req.body.PostId } });
     const comment = new Comment({
-      UserId: user.id,
+      UserId: req.token.UserId,
       PostId: post.id,
       text: req.body.text,
       first_name:req.body.first_name,
