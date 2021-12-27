@@ -4,7 +4,6 @@ const { User } = require("../models");
 const bcrypt = require("bcrypt");
 // JSON Web Token is a compact URL-safe means of representing claims to be transferred between two parties.
 const jwt = require("jsonwebtoken");
-const fs = require("fs");
 
 // Model : SignUp
 exports.signup = async (req, res, next) => {
