@@ -8,6 +8,7 @@ const userRoutes = require("./routes/user.routes");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Cors integration (update?)
 app.use((req, res, next) => {
   // Ajout de header sur la réponse, * (tout le monde) à accès à l'origin de l'API
   res.setHeader('Access-Control-Allow-Origin', '*');

@@ -73,9 +73,7 @@ exports.updatePost = async (req, res, next) => {
     let post = await Post.findOne({ where: { id: req.params.id } });
 
     if (req.file) {
-      newImage = `${req.protocol}://${req.get("host")}/images/${
-        req.file.filename
-      }`;
+      newImage = `${req.protocol}://${req.get("host")}/images/${req.file.filename}`;
       if (post.imageUrl) {
         const filename = post.imageUrl.split("/images/")[1];
         fs.unlink(`images/${filename}`, (err) => {
