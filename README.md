@@ -67,13 +67,25 @@ Une fois Node.js correctement installé (dans le dossier front, mais aussi dans 
    ```js
    JWT_TOKEN=SECRET-KEY
    ```
-3. Lancer le serveur back-end
-   ```sh
-   node run server
+3. Créer un fichier .env dans le dossier back
+   ```js
+   JWT_TOKEN=SECRET-KEY
+   ```
+4. Configurer le fichier db.config.json
+   ```json
+   {
+      "development": {
+         "host": "host_name",
+         "database": "database_name",
+         "username": "username",
+         "password": "password",
+         "dialect": "mysql"
+      }
+   }
    ou
    nodemon server
    ```
-4. Lancer le serveur front-end
+5. Lancer le serveur front-end
    ```sh
    npm run serve
    ```
